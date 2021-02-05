@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Update</title>
+  </head>
+
+  <body>
+
+  Current version: {{ version }} <br>
+  <br>
+
+  <form action="/update" method="POST">
+    <select name="version">
+    {% for newversion in versions %}
+      <option value="{{ newversion }}">{{ newversion }}</option>
+    {% end %}
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+
+  </body>
+
+</html>

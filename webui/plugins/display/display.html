@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Display</title>
+  </head>
+
+  <body>
+
+{% if isOn %}
+    <form action="/display" method="POST">
+      <button name="action" value="off">Switch Display Off</button>
+    </form>
+{% else %}
+    <form action="/display" method="POST">     
+      <button name="action" value="on">Switch Display On</button>        
+    </form>
+{% end %}
+  </body>
+
+</html>

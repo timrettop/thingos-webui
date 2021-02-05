@@ -1,21 +1,34 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
+from setuptools import setup
+from setuptools import find_packages
 
 import sys
-sys.path.insert(1, 'src/')
 from webui.version import __version__
 
 
-setup(name='tingos-webui',
+setup(name='thingos-webui',
       version=__version__,
       description='Basic web UI to control a Raspberry Pi running thingOS',
       author='Sven Klomp',
       author_email='mail@klomp.eu',
       url='https://github.com/avanc/thingos-webui',
-      packages=['webui'],
-      package_dir={'webui': 'src/webui'},
+      packages=find_packages(include=['webui', 'webui.*']),
+      package_data={
+        "": ["*.html"],
+      },
       license="GPLv2",
       platforms=["Linux"],
-      long_description=""
+      long_description="",
+
+      install_requires=['tornado>=3.1'],
+
+
+    entry_points={
+        'console_scripts': [
+            'webui=webui.server:main',
+        ],
+    },
+      
+      
      )
