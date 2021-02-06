@@ -16,6 +16,7 @@ setup(name='thingos-webui',
       packages=find_packages(include=['webui', 'webui.*']),
       package_data={
         "": ["*.html"],
+        "webui": ["static/*"],
       },
       license="GPLv2",
       platforms=["Linux"],

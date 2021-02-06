@@ -1,15 +1,17 @@
 <html>
   <head>
-    <title>{{ title }}</title>
+    <title>Power</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ static_url("w3.css") }}"> 
   </head>
 
-  <body>
+  <body class="w3-content" style="max-width:500px">
     <form action="/power" method="POST">
-      <button name="action" value="reboot">Reboot</button>
+      <button class="w3-button w3-round-large" name="action" value="reboot">Reboot</button>
     </form>
 
     <form action="/power" method="POST">
-      <button name="action" value="shutdown">Shutdown</button>
+      <button class="w3-button w3-round-large w3-teal" name="action" value="shutdown">Shutdown</button>
     </form>
   </body>
 
