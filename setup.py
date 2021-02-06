@@ -23,12 +23,7 @@ setup(name='thingos-webui',
 
       install_requires=['tornado>=3.1'],
 
+      scripts=['bin/thingos_webui'],
 
-    entry_points={
-        'console_scripts': [
-            'webui=webui.server:main',
-        ],
-    },
-      
       
      )
