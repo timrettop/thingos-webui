@@ -8,7 +8,7 @@ class PowerHandler(tornado.web.RequestHandler):
 
     def post(self):
         self.set_header("Content-Type", "text/plain")
-        if (self.get_body_argument("action")=="shutdown"):
+        if (self.get_body_argument("action")=="poweroff"):
             shutdown()
         if (self.get_body_argument("action")=="reboot"):
             reboot();
