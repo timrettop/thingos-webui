@@ -1,21 +1,17 @@
-<html>
-  <head>
-    <title>Display</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ static_url("w3.css") }}"> 
-  </head>
+{% extends "../base.html" %}
 
-  <body>
 
-{% if isOn %}
+{% block body %}
+
+  {% if isOn %}
     <form action="/display" method="POST">
-      <button name="action" value="off">Switch Display Off</button>
+      <button class="w3-button w3-round-large w3-grey" style="width:100%" name="action" value="off">Switch Display Off</button>
     </form>
-{% else %}
+  {% else %}
     <form action="/display" method="POST">     
-      <button name="action" value="on">Switch Display On</button>        
+      <button class="w3-button w3-round-large w3-grey" name="action" value="on">Switch Display On</button>        
     </form>
-{% end %}
-  </body>
+  {% end %}
 
-</html>
+{% end %}
+

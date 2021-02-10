@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ static_url("w3.css") }}"> 
+  </head>
+
+  <body class="w3-sand">
+    <div class="w3-content w3-blue-grey" style="max-width:500px; height: 100vh; padding:5px">
+      <header>
+          <img style="width: 100%; height: auto;" src="{{ static_url("photos_logo.svg") }}">
+      </header>
+
+      <div >
+        {% block body %} No content {% end %}
+      </div>
+
+      <div >
+        {% block back %}<b><a href="/">&larr;Back</a></b>{% end %}
+      </div>
+      
+
+    </div>
+  </body>
+
+</html>

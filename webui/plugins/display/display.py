@@ -5,7 +5,7 @@ import re
 
 class DisplayHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render("display.html", isOn=isOn())
+        self.render("display.html", title="Display", isOn=isOn())
 
     def post(self):
         self.set_header("Content-Type", "text/plain")
