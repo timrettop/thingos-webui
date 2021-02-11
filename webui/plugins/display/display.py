@@ -117,7 +117,7 @@ def writeData(rules):
     f.close()
  
   for rule in rules:
-    stringrule="{minute} {hour} {day} {month} {dayofweek} /usr/bin/photoframe.sh display {state}".format(minute=rule["minute"], hour=rule["hour"], day=rule["day"], month=rule["month"], dayofweek=rule["dayofweek"], state=rule["state"])
+    stringrule="{minute} {hour} {day} {month} {dayofweek} /usr/bin/photoframe.sh display {state}\n".format(minute=rule["minute"], hour=rule["hour"], day=rule["day"], month=rule["month"], dayofweek=rule["dayofweek"], state=rule["state"])
     content.append(stringrule)
  
  
@@ -126,5 +126,5 @@ def writeData(rules):
   f.close()
   
   print(content[1])
-  #subprocess.Popen(["photoframe.sh","sync"])
+  subprocess.Popen(["/etc/init.d/S51crond","restart"])
 
