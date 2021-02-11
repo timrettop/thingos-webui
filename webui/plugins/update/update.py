@@ -11,7 +11,7 @@ class UpdateHandler(tornado.web.RequestHandler):
     def get(self):
         versions=platformupdate.get_all_versions()
         current_version=platformupdate.get_os_version()
-        self.render("update.html", title="Update", version=current_version, versions=versions)
+        self.render("update.html", title="Update", version=current_version[1], versions=versions)
 
     def post(self):
         self.set_header("Content-Type", "text/plain")

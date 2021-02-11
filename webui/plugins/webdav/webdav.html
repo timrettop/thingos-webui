@@ -1,0 +1,20 @@
+{% extends "../base.html" %}
+
+
+{% block body %}
+  <form class="w3-container"  action="/webdav" method="POST">
+
+    <label class="w3-text-white"><b>WebDAV URL</b></label>
+    <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="https://..." value="{{ webdav["url"] }}" name="url">
+    
+    <label class="w3-text-white"><b>Username</b></label>
+    <input class="w3-input w3-border w3-margin-bottom" type="text" value="{{ webdav["username"] }}" name="username">
+
+    <label class="w3-text-white"><b>Password</b></label>
+    <input class="w3-input w3-border w3-margin-bottom" type="password" name="password">
+
+    <button class="w3-button w3-round-large w3-grey" style="width:100%">Save</button>
+  
+  </form>
+
+{% end %}
