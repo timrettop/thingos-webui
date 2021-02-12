@@ -6,14 +6,9 @@ from .plugins import power
 from .plugins import display
 from .plugins import update
 from .plugins import webdav
+from .plugins import timezone
 
 import os
-
-#display.handler.isOn = display.handler.isOn_Mock
-#display.handler.setOn = display.handler.setOn_Mock
-
-#plugins.power.handler.reboot = plugins.power.handler.reboot_Mock
-#plugins.power.handler.shutdown = plugins.power.handler.shutdown_Mock
 
 settings = {
     "static_path": os.path.join(os.path.dirname(__file__), "static"),
@@ -28,6 +23,7 @@ def main():
          (r"/display", display.handler.DisplayHandler),
          (r"/update", update.handler.UpdateHandler),
          (r"/webdav", webdav.handler.WebdavHandler),
+         (r"/timezone", timezone.handler.TimezoneHandler),
          (r'/favicon.ico', tornado.web.StaticFileHandler, {'path': settings['static_path']})
   ], **settings)
 

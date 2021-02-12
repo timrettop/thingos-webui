@@ -1,0 +1,16 @@
+{% extends "../base.html" %}
+
+
+{% block body %}
+  Current Timezone: {{ timezone }} <br>
+  <br>
+
+  <form action="/timezone" method="POST">
+    <select name="timezone">
+    {% for tz in timezones %}
+      <option value="{{ tz }}">{{ tz }}</option>
+    {% end %}
+    </select>
+    <input class="w3-button w3-round-large w3-grey" type="submit" value="Set">
+  </form>
+{% end %}

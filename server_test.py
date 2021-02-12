@@ -10,6 +10,7 @@ from webui import server
 #plugins.power.handler.reboot = plugins.power.handler.reboot_Mock
 #plugins.power.handler.shutdown = plugins.power.handler.shutdown_Mock
 
+@patch("webui.plugins.timezone.handler.setTimezone")
 @patch("webui.plugins.webdav.handler.writeData")
 @patch("webui.plugins.webdav.handler.readData")
 @patch("webui.plugins.update.handler.platformupdate.perform_update")
@@ -21,7 +22,7 @@ from webui import server
 @patch("webui.plugins.display.handler.readData")
 @patch("webui.plugins.display.handler.setOn")
 @patch("webui.server.display.handler.isOn")
-def main_test(mock_isOn, mock_setOn, mock_readcron, mock_writecron, mock_shutdown, mock_reboot, mock_version, mock_versions, mock_update, mock_readwebdav, mock_writewebdav):
+def main_test(mock_isOn, mock_setOn, mock_readcron, mock_writecron, mock_shutdown, mock_reboot, mock_version, mock_versions, mock_update, mock_readwebdav, mock_writewebdav, mock_settimezone):
   mock_readcron.return_value = [
     {"minute":"0", "hour":"20", "day":"*", "month":"*", "dayofweek":"*", "state":"off"},
     {"minute":"0", "hour":"8", "day":"*", "month":"*", "dayofweek":"*", "state":"on"}]
