@@ -28,7 +28,7 @@ def getTimezoneFromPath(path):
   return tz
 
 def getTimezone():
-  tz=getTimezoneFromPath(os.path.realpath(localtime_link))
+  tz=getTimezoneFromPath(os.readlink(localtime_link))
   return tz
   
 def getAllTimezones():
