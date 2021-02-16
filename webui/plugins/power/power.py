@@ -16,7 +16,7 @@ class PowerHandler(tornado.web.RequestHandler):
 
 
 def shutdown():
-  subprocess.check_output(["shutdown"])
+  subprocess.check_output(["poweroff"])
   
 def shutdown_Mock():
   pass
