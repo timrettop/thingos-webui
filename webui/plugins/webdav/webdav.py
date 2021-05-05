@@ -2,7 +2,7 @@ import tornado.web
 import subprocess
 
 
-filename="/data/photoframe/photoframe.conf"
+filename="/data/photoframe/conf/webdav.conf"
 
 class WebdavHandler(tornado.web.RequestHandler):
     def get(self):
