@@ -53,7 +53,23 @@
   
   </form>  
   
+
   
+  <form class=""  action="/display" method="POST">
+
+    <label class="w3-text-white"><b>Slideshow Delay</b></label>   
+    <div class="w3-row">
+
+      <div class="w3-col" style="width:100%">
+         <input class="w3-input w3-border" type="text" placeholder="seconds" value="{{ slideshowdelay }}" name="slideshowdelay">
+      </div>
+         
+    </div> 
+  
+    <button class="w3-button w3-round-large w3-grey" style="width:100%" name="action" value="setdelay">Save</button>
+  
+  </form>  
+
 
 {% end %}
 

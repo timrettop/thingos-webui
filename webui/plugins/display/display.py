@@ -4,6 +4,7 @@ import subprocess
 import re
 
 filename="/data/etc/crontabs/root"
+photos_conf="/data/photoframe/conf/photoframe.conf"
 
 class DisplayHandler(tornado.web.RequestHandler):
     def get(self):
@@ -23,7 +24,7 @@ class DisplayHandler(tornado.web.RequestHandler):
         
         
         
-        self.render("display.html", title="Display", isOn=isOn(), fromhour=fromhour, fromminute=fromminute, tohour=tohour, tominute=tominute)
+        self.render("display.html", title="Display", isOn=isOn(), fromhour=fromhour, fromminute=fromminute, tohour=tohour, tominute=tominute, slideshowdelay=getDelay())
 
     def post(self):
         self.set_header("Content-Type", "text/plain")
@@ -51,6 +52,9 @@ class DisplayHandler(tornado.web.RequestHandler):
           if (cronjobon["minute"]!="" and cronjobon["hour"]!="" and cronjoboff["minute"]!="" and cronjoboff["hour"]!=""):
             writeData([cronjobon, cronjoboff])
 
+        elif (self.get_body_argument("action")=="setdelay"):
+          setDelay(self.get_body_argument("slideshowdelay"))
+
         self.redirect("/display")
 
 
@@ -64,6 +68,48 @@ def setOn(state):
       subprocess.check_output(["vcgencmd", "display_power", "1"])
     else: 
       subprocess.check_output(["vcgencmd", "display_power", "0"])
+
+delay_searchstring='SLIDESHOW_DELAY=(\d+)'
+
+def getDelay():
+  delay=""
+
+  try:
+    f = open(photos_conf, "r")
+  except:
+    pass
+  else:
+    for line in f:
+      match=re.search(delay_searchstring, line)
+      if match:
+        delay=match.group(1)
+
+    f.close()
+      
+  return delay
+
+
+def setDelay(delay):
+  lines=[]
+
+  try:
+    f = open(photos_conf, "r")
+  except:
+    lines.append("SLIDESHOW_DELAY={delay}\n".format(delay=delay))
+  else:
+    for line in f:
+      match=re.search(delay_searchstring, line)
+      if match:
+        lines.append("SLIDESHOW_DELAY={delay}\n".format(delay=delay))
+      else:
+        lines.append(line)
+
+    f.close()
+
+  with open(photos_conf, 'w') as file:
+    file.writelines( lines )
+
+
 
 
 re_searchstring=' *([^ ]+) +([^ ]+) +([^ ]+) +([^ ]+) +([^ ]+) +/usr/bin/photoframe\.sh display (on|off)'
@@ -106,7 +152,9 @@ def filterRules(lines):
 
 def writeData(rules):
   content=[]
-  
+  with open('stats.txt', 'r') as file:
+    # read a list of lines into data
+    data = file.readlines()
   try:
     f = open(filename, "r")
   except:

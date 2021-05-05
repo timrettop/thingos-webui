@@ -18,6 +18,11 @@ class TestWriteData(unittest.TestCase):
       rules=[{"minute":"0", "hour":"20", "day":"*", "month":"*", "dayofweek":"*", "state":"off"}]
       display.writeData(rules)
       
+class TestWriteDelay(unittest.TestCase):
+
+    @patch("builtins.open", mock_open(read_data='SLIDESHOW_DELAY=112\nANOTHER_ITEM=Hello'))
+    def test_valid(self):
+      display.setDelay(10)
 
 
 if __name__ == '__main__':
