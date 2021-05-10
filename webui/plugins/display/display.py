@@ -152,9 +152,6 @@ def filterRules(lines):
 
 def writeData(rules):
   content=[]
-  with open('stats.txt', 'r') as file:
-    # read a list of lines into data
-    data = file.readlines()
   try:
     f = open(filename, "r")
   except:
