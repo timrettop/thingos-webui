@@ -2,11 +2,12 @@
 
 
 {% block body %}
-  Current Timezone: {{ timezone }} <br>
-  <br>
-
+  Set Timezone: <br>
+  
   <form action="/timezone" method="POST">
     <select name="timezone">
+      <option selected value="{{ timezone }}">{{ timezone }}</option>
+    
     {% for tz in timezones %}
       <option value="{{ tz }}">{{ tz }}</option>
     {% end %}
