@@ -69,7 +69,7 @@ def setOn(state):
     else: 
       subprocess.check_output(["vcgencmd", "display_power", "0"])
 
-delay_searchstring='SLIDESHOW_DELAY=(\d+)'
+delay_searchstring='^SLIDESHOW_DELAY=(.*)$'
 
 def getDelay():
   delay=""
@@ -91,6 +91,7 @@ def getDelay():
 
 def setDelay(delay):
   lines=[]
+  delay_added=False
 
   try:
     f = open(photos_conf, "r")
@@ -101,8 +102,13 @@ def setDelay(delay):
       match=re.search(delay_searchstring, line)
       if match:
         lines.append("SLIDESHOW_DELAY={delay}\n".format(delay=delay))
+        delay_added=True
       else:
         lines.append(line)
+
+    if not delay_added:
+        lines.append("SLIDESHOW_DELAY={delay}\n".format(delay=delay))
+        delay_added=True
 
     f.close()
 
