@@ -67,7 +67,7 @@ def setOn(state):
     if (state):
       subprocess.check_output(["photoframe.sh", "display", "on"])
     else: 
-      subprocess.check_output(["photoframe.sh", "display", "on"])
+      subprocess.check_output(["photoframe.sh", "display", "off"])
 
 delay_searchstring='^SLIDESHOW_DELAY=(.*)$'
 
