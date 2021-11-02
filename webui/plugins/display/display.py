@@ -65,9 +65,9 @@ def isOn():
 
 def setOn(state):
     if (state):
-      subprocess.check_output(["vcgencmd", "display_power", "1"])
+      subprocess.check_output(["photoframe.sh", "display", "on"])
     else: 
-      subprocess.check_output(["vcgencmd", "display_power", "0"])
+      subprocess.check_output(["photoframe.sh", "display", "on"])
 
 delay_searchstring='^SLIDESHOW_DELAY=(.*)$'
 
