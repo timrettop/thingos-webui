@@ -22,7 +22,7 @@ setup(name='thingos-webui',
       platforms=["Linux"],
       long_description="",
 
-      install_requires=['tornado>=3.1'],
+      install_requires=["tornado-http-auth>='1.1.1';tornado>='3.1'"],
 
       scripts=['bin/thingos_webui'],
 
