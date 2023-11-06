@@ -1,5 +1,6 @@
 import tornado.ioloop
 import tornado.web
+import tornado_http_auth
 
 from .plugins import index
 from .plugins import power
