@@ -1,5 +1,4 @@
 import tornado.web
-import tornado.ioloop
 import base64
 import functools
 import hashlib,base64,random
